@@ -136,6 +136,93 @@ test('refreshing before saving a setting keeps progress saved by another tab', (
   assert.equal(final.settings.gridMastery, true);
 });
 
+const learned = level => ({ level, credit: 0, due: 0, interval: 1, seen: 1, correct: 1, wrong: 0, wasStrong: false });
+
+test('two tabs practicing at the same time keep each other\'s progress', () => {
+  const store = fakeStore();
+  const tabA = createProgressKeeper(store);
+  const tabB = createProgressKeeper(store);
+
+  tabA.get().facts['3x7'] = learned(2);
+  tabA.save();
+  tabB.get().facts['4x6'] = learned(3);
+  tabB.save();
+  tabA.get().facts['2x9'] = learned(1);
+  tabA.save();
+
+  const final = loadProgress(store);
+  assert.equal(final.facts['3x7'].level, 2);
+  assert.equal(final.facts['4x6'].level, 3);
+  assert.equal(final.facts['2x9'].level, 1);
+});
+
+test('a setting changed in one tab survives a save from another tab', () => {
+  const store = fakeStore();
+  const gridTab = createProgressKeeper(store);
+  const practiceTab = createProgressKeeper(store);
+
+  gridTab.get().settings.gridMastery = true;
+  gridTab.save();
+  practiceTab.get().settings.numpad = 'on';
+  practiceTab.get().speed[1].push(1500);
+  practiceTab.save();
+
+  const final = loadProgress(store);
+  assert.equal(final.settings.gridMastery, true);
+  assert.equal(final.settings.numpad, 'on');
+  assert.deepEqual(final.speed[1], [1500]);
+});
+
+test('saving keeps the same progress object and shows other tabs\' changes', () => {
+  const store = fakeStore();
+  const tabA = createProgressKeeper(store);
+  const tabB = createProgressKeeper(store);
+  const pageCopy = tabA.get();
+
+  tabB.get().facts['4x6'] = learned(3);
+  tabB.save();
+  tabA.get().facts['3x7'] = learned(2);
+  tabA.save();
+
+  assert.equal(tabA.get(), pageCopy);
+  assert.equal(pageCopy.facts['4x6'].level, 3);
+});
+
+test('an older tab saving after an import doesn\'t bring back replaced progress', () => {
+  const store = fakeStore();
+  const oldTab = createProgressKeeper(store);
+  oldTab.get().facts['3x7'] = learned(1);
+  oldTab.get().facts['5x5'] = learned(1);
+  oldTab.save();
+
+  // Another page imports a file, which replaces everything in storage.
+  const imported = defaultProgress();
+  imported.facts['3x7'] = learned(4);
+  saveProgress(imported, store);
+
+  oldTab.get().facts['2x9'] = learned(2);
+  oldTab.save();
+
+  const final = loadProgress(store);
+  assert.equal(final.facts['3x7'].level, 4);
+  assert.equal(final.facts['5x5'], undefined);
+  assert.equal(final.facts['2x9'].level, 2);
+});
+
+test('after an import on this page, saving writes the imported progress whole', () => {
+  const store = fakeStore();
+  const keeper = createProgressKeeper(store);
+  keeper.get().facts['5x5'] = learned(1);
+  keeper.save();
+
+  const imported = defaultProgress();
+  imported.facts['3x7'] = learned(4);
+  keeper.set(imported);
+  keeper.save();
+
+  assert.deepEqual(Object.keys(loadProgress(store).facts), ['3x7']);
+});
+
 test('loading skips bad fact records instead of resetting everything', () => {
   const saved = { version: 1, facts: { '3x7': { level: 7 }, '2x5': { level: 2 }, '13x13': { level: 1 }, '4x4': 'junk' } };
   const out = loadProgress(fakeStore({ [STORAGE_KEY]: JSON.stringify(saved) }));

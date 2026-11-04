@@ -3,14 +3,14 @@
 
 import { NUMBERS, factId } from './facts.js';
 import { getRecord, LEVEL_NAMES } from './scheduler.js';
-import { createProgressKeeper } from './storage.js';
+import { createProgressKeeper, STORAGE_KEY } from './storage.js';
 
 const table = document.getElementById('grid');
 const caption = document.getElementById('grid-caption');
 const masteryToggle = document.getElementById('mastery-toggle');
 const legend = document.getElementById('mastery-legend');
 const keeper = createProgressKeeper(); // this page's copy of progress (see storage.js)
-let progress = keeper.get();
+const progress = keeper.get();         // updated in place by the keeper
 
 buildTable();
 masteryToggle.checked = progress.settings.gridMastery;
@@ -120,8 +120,22 @@ function applyMastery() {
 masteryToggle.addEventListener('change', () => {
   // Re-read first, so practice done in another tab isn't overwritten
   // (and the colors show the latest levels).
-  progress = keeper.refresh();
+  keeper.refresh();
   progress.settings.gridMastery = masteryToggle.checked;
   keeper.save();
   applyMastery();
+});
+
+// Show the latest levels when practice happened somewhere else:
+// - pageshow (persisted): the browser brought this page back from its
+//   back/forward cache, e.g. after pressing Back from the practice page;
+// - storage: another open tab just saved progress.
+function showLatest() {
+  keeper.refresh();
+  masteryToggle.checked = progress.settings.gridMastery;
+  applyMastery();
+}
+window.addEventListener('pageshow', event => { if (event.persisted) showLatest(); });
+window.addEventListener('storage', event => {
+  if (event.key === STORAGE_KEY || event.key === null) showLatest();
 });

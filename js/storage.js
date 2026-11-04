@@ -131,22 +131,66 @@ export function exportFileName(date = new Date()) {
   return `flash-math-progress-${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}.json`;
 }
 
-// Holds one page's copy of progress.
-// - refresh() re-reads storage, so changes made in another tab aren't overwritten.
-// - If a save ever fails (private mode, storage full), this copy is the only
-//   one left, so refresh() keeps it instead of reloading older saved data.
+const copy = x => JSON.parse(JSON.stringify(x));
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+
+// Combines saved progress with this page's changes. A "change" is anything
+// that differs from `base`, the saved progress as this page last saw it.
+// Each fact, each setting and each speed list is taken from this page only
+// if this page changed it; everything else comes from storage, so another
+// tab's work isn't overwritten. With no base (just after an import), this
+// page's copy wins outright.
+function mergeChanges(stored, mine, base) {
+  if (!base) return copy(mine);
+  const out = copy(stored);
+  const ids = new Set([...Object.keys(mine.facts), ...Object.keys(base.facts)]);
+  for (const id of ids) {
+    if (same(mine.facts[id], base.facts[id])) continue;
+    if (mine.facts[id] === undefined) delete out.facts[id];
+    else out.facts[id] = copy(mine.facts[id]);
+  }
+  for (const key of Object.keys(mine.settings)) {
+    if (!same(mine.settings[key], base.settings[key])) out.settings[key] = mine.settings[key];
+  }
+  for (const digits of Object.keys(mine.speed)) {
+    if (!same(mine.speed[digits], base.speed[digits])) out.speed[digits] = copy(mine.speed[digits]);
+  }
+  return out;
+}
+
+// Holds one page's copy of progress, and keeps it in step with other tabs.
+// - save() and refresh() re-read storage and combine it with this page's
+//   changes (see mergeChanges), so two open tabs don't overwrite each other.
+// - The page's progress object stays the same object; it's updated in place,
+//   so code holding on to it sees the latest data.
+// - If a save fails (private mode, storage full), the unsaved changes are
+//   still kept, because they still differ from what storage holds.
 export function createProgressKeeper(store) {
-  let progress = loadProgress(store);
-  let lastSaveOk = true;
+  const progress = loadProgress(store);
+  let base = copy(progress);
+
+  // Bring the page's copy up to date with storage, keeping its own changes.
+  function sync() {
+    const stored = loadProgress(store);
+    Object.assign(progress, mergeChanges(stored, progress, base));
+    base = stored;
+  }
+
   return {
     get: () => progress,
-    set(newProgress) { progress = newProgress; },
+    // Replace everything (used after an import); the next save writes it whole.
+    set(newProgress) {
+      Object.assign(progress, copy(newProgress));
+      base = null;
+    },
     save() {
-      lastSaveOk = saveProgress(progress, store);
-      return lastSaveOk;
+      sync();
+      const ok = saveProgress(progress, store);
+      if (ok) base = copy(progress);
+      return ok;
     },
     refresh() {
-      if (lastSaveOk) progress = loadProgress(store);
+      sync();
       return progress;
     },
   };

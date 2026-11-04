@@ -28,7 +28,7 @@ const checkButton = $('check-button');
 const isTouch = matchMedia('(pointer: coarse)').matches;
 
 const keeper = createProgressKeeper(); // this page's copy of progress (see storage.js)
-let progress = keeper.get();
+const progress = keeper.get();         // updated in place by the keeper
 let session = null;
 let lastRound = null;     // {pool, roundType}, for "Practice again"
 let roundStartedAt = 0;
@@ -86,13 +86,21 @@ $('start-button').addEventListener('click', () => startRound(factsForNumbers([..
 
 setupProgressButtons({
   getProgress: () => progress,
-  onImported: imported => { keeper.set(imported); progress = imported; showSavedRoundType(); },
+  onImported: imported => { keeper.set(imported); showSavedRoundType(); },
+});
+
+// When the browser brings this page back from its back/forward cache (for
+// example after pressing Back), pick up anything saved on another page.
+window.addEventListener('pageshow', event => {
+  if (!event.persisted) return;
+  keeper.refresh();
+  if (state === 'setup') showSavedRoundType();
 });
 
 // ---------- Starting a round ----------
 
 function startRound(pool, roundType) {
-  progress = keeper.refresh(); // pick up anything changed on another page
+  keeper.refresh(); // pick up anything changed on another page
   progress.settings.sessionMode = roundType;
   save();
   lastRound = { pool, roundType };

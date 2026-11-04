@@ -48,14 +48,6 @@ They also run on every push through GitHub Actions.
 - Easier ways to keep progress across devices than export and import.
 - Tuning the practice mix and review gaps once real students have used it.
 
-### Fixes
-
-*Probable to be addressed in the future*
-
- - keep two open tabs from overwriting each other's progress
- - refresh the grid's mastery colors after pressing Back
-
-
 ## AI Disclaimer
 
 *The goal for this project was to build a working version as quickly as possible, and therefore coding and research were conducted almost entirely by AI.*

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grid · Flash Math</title>
+  <link rel="icon" href="img/sloth-small.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">Flash Math</a>
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="grid.html" aria-current="page">Grid</a>
+      <a href="practice.html">Practice</a>
+    </nav>
+  </header>
+
+  <main class="page page-wide">
+    <h1>Multiplication grid</h1>
+    <p class="muted">Hover over or tap any square to see its fact. Arrow keys move around the grid.</p>
+    <label class="switch"><input type="checkbox" id="mastery-toggle"> Show mastery</label>
+    <p id="grid-caption" class="grid-caption" aria-live="polite"></p>
+    <div id="mastery-legend" class="legend" hidden>
+      <span data-level="0">New</span>
+      <span data-level="1">Learning</span>
+      <span data-level="2">Familiar</span>
+      <span data-level="3">Strong</span>
+      <span data-level="4">Mastered</span>
+    </div>
+    <div class="grid-wrap">
+      <table id="grid" class="grid" aria-label="Multiplication grid, 1 to 12"></table>
+    </div>
+  </main>
+
+  <script type="module" src="js/grid.js"></script>
+</body>
+</html>

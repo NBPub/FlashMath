@@ -1,0 +1,181 @@
+/* Flash Math: one stylesheet for every page.
+   Mobile-first: base styles are for phones; the @media block near the end
+   adjusts larger screens. Colors live in the variables right below. */
+
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --text: #2b2b2b;
+  --muted: #6b6b6b;
+  --line: #e2dfd8;
+  --accent: #4f7f78;
+  --accent-soft: #e3eeec;
+  --accent-faint: #f0f5f4;
+  --fast: #2f8f57;
+  --slow: #3b8ea5;
+  /* Mastery colors: strongest for facts that need the most work. */
+  --lvl-0: #e9825a;
+  --lvl-1: #f0a35e;
+  --lvl-2: #f6cf94;
+  --lvl-3: #faead0;
+  --radius: 12px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: .25rem 1rem; padding: .5rem 1rem;
+  background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.brand { font-weight: 700; color: var(--text); text-decoration: none; }
+.topbar nav { display: flex; gap: .25rem; }
+.topbar nav a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 .75rem;
+  border-radius: 8px; color: var(--muted); text-decoration: none;
+}
+.topbar nav a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+
+/* ---------- Page layout and text ---------- */
+.page { max-width: 40rem; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+.page-wide { max-width: 52rem; }
+h1 { font-size: 1.6rem; line-height: 1.2; margin: .5rem 0 1rem; }
+h2 { font-size: 1.15rem; margin: 1.75rem 0 .5rem; }
+.lead { font-size: 1.1rem; }
+/* The sloth: decorative only, never shown on practice cards. */
+.mascot { float: right; width: 8rem; height: auto; margin: 0 0 .5rem 1rem; }
+.mascot-small { display: block; width: 4.5rem; height: auto; margin-top: .5rem; }
+.muted { color: var(--muted); }
+.status { min-height: 1.5em; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: .75rem 0; }
+
+/* ---------- Buttons ---------- */
+button, .button {
+  font: inherit; min-height: 44px; padding: .5rem 1rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface); color: var(--text); cursor: pointer;
+}
+a.button { text-decoration: none; }
+button:hover, .button:hover { border-color: var(--accent); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button:focus-visible, .button:focus-within, a:focus-visible, td:focus-visible, input:focus-visible {
+  outline: 3px solid var(--accent); outline-offset: 2px;
+}
+.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.big { width: 100%; min-height: 3.5rem; font-size: 1.15rem; }
+.link-button { border: none; background: none; color: var(--accent); text-decoration: underline; }
+
+/* ---------- Practice setup ---------- */
+.chips { display: grid; grid-template-columns: repeat(6, 1fr); gap: .5rem; }
+.chip { padding: .5rem 0; font-variant-numeric: tabular-nums; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.choice-list { display: flex; flex-wrap: wrap; gap: .5rem; border: none; padding: 0; margin: 0; }
+.choice-list label {
+  display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: .25rem .75rem;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--surface); cursor: pointer;
+}
+.choice-list label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.or { text-align: center; color: var(--muted); margin: 1.5rem 0 0; }
+
+/* ---------- Card ---------- */
+.progress-track { height: 6px; margin: .5rem 0 1rem; background: var(--line); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.card {
+  padding: 1.5rem 1rem; text-align: center;
+  background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius);
+  transition: border-color .15s, background-color .15s;
+}
+.problem { margin: 0 0 1rem; font-size: clamp(2.5rem, 12vw, 4rem); font-weight: 700; font-variant-numeric: tabular-nums; }
+.answer {
+  font: inherit; font-size: 2rem; width: 6ch; padding: .25rem; text-align: center;
+  border: 2px solid var(--line); border-radius: 10px; font-variant-numeric: tabular-nums;
+}
+.feedback { min-height: 1.5em; margin: .75rem 0 0; font-size: 1.1rem; }
+.card.correct-fast { border-color: var(--fast); background: #eef7f1; }
+.card.correct-fast .feedback { color: var(--fast); font-weight: 700; }
+.card.correct-slow { border-color: var(--slow); background: #edf5f8; }
+.card.correct-slow .feedback { color: var(--slow); font-weight: 700; }
+.card.wrong { border-color: var(--text); }
+#continue-button { margin-top: 1rem; }
+.check { margin-left: .5rem; vertical-align: top; min-height: 3.3rem; }
+.numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-top: 1rem; }
+.numpad button { min-height: 3.25rem; font-size: 1.4rem; }
+.numpad .enter { background: var(--accent); border-color: var(--accent); color: #fff; }
+.session-controls { justify-content: space-between; }
+
+/* ---------- Summary ---------- */
+.summary-score { font-size: 1.5rem; font-weight: 700; }
+.celebrate { animation: pop .5s ease-out; }
+@keyframes pop {
+  from { transform: scale(.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- Grid ---------- */
+.switch { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; }
+.switch input { width: 1.25rem; height: 1.25rem; }
+.grid-caption { min-height: 1.5em; margin: .25rem 0 .75rem; font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.grid-wrap { overflow-x: auto; }
+.grid {
+  width: 100%; border-collapse: collapse; background: var(--surface);
+  font-size: clamp(.7rem, 2.6vw, 1rem); font-variant-numeric: tabular-nums;
+}
+.grid th, .grid td { min-width: 1.9em; padding: .35em 0; border: 1px solid var(--line); text-align: center; }
+.grid th { background: var(--bg); color: var(--muted); font-weight: 600; }
+.grid td { cursor: pointer; }
+
+/* Mastery colors (only when "Show mastery" is on). New cells are striped and
+   Learning cells bold, so the weakest facts stand out without relying on color. */
+.show-mastery td[data-level="0"] {
+  background-color: var(--lvl-0);
+  background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(255, 255, 255, .4) 4px 7px);
+}
+.show-mastery td[data-level="1"] { background-color: var(--lvl-1); font-weight: 700; }
+.show-mastery td[data-level="2"] { background-color: var(--lvl-2); }
+.show-mastery td[data-level="3"] { background-color: var(--lvl-3); }
+.show-mastery td[data-level="4"] { color: var(--muted); }
+
+/* Highlighting (comes after mastery so the selected cell always wins). */
+/* td.in-line (not .in-line) so the tint also wins over the mastery colors. */
+.grid td.in-line { background: var(--accent-faint); }
+.grid th.in-line { background-color: var(--accent-soft); }
+.grid .mirror { box-shadow: inset 0 0 0 2px var(--accent); }
+.grid th.header-on { background: var(--accent); color: #fff; }
+.grid td.selected { background: var(--accent); color: #fff; font-weight: 700; }
+
+.legend { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 0 0 .75rem; font-size: .9rem; }
+.legend span::before {
+  content: ""; display: inline-block; width: 1em; height: 1em; margin-right: .35em;
+  vertical-align: -.15em; border: 1px solid var(--line); background-color: var(--surface);
+}
+.legend [data-level="0"]::before {
+  background-color: var(--lvl-0);
+  background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255, 255, 255, .4) 3px 5px);
+}
+.legend [data-level="1"]::before { background-color: var(--lvl-1); }
+.legend [data-level="2"]::before { background-color: var(--lvl-2); }
+.legend [data-level="3"]::before { background-color: var(--lvl-3); }
+
+/* ---------- Larger screens ---------- */
+@media (min-width: 40rem) {
+  h1 { font-size: 2rem; }
+  .chips { grid-template-columns: repeat(12, 1fr); }
+  .numpad { max-width: 20rem; margin-inline: auto; }
+}
+
+/* ---------- Respect "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flash Math</title>
+  <link rel="icon" href="img/sloth-small.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">Flash Math</a>
+    <nav aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="grid.html">Grid</a>
+      <a href="practice.html">Practice</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <img class="mascot" src="img/sloth.svg" alt="" width="160" height="160">
+    <h1>Multiplication facts, one at a time</h1>
+    <p class="lead">
+      Practice the times tables from 1×1 to 12×12. The app keeps track of which
+      facts you know and gives you more practice on the ones you don't. No clock, no rush.
+    </p>
+    <p><a class="button primary" href="practice.html">Start practicing</a></p>
+
+    <h2>How to use it</h2>
+    <ol>
+      <li><strong>Study the grid.</strong> Look over the <a href="grid.html">multiplication grid</a>.
+        Hover over or tap any square to see its fact.</li>
+      <li><strong>Practice.</strong> Choose a number, a group, or Adaptive practice, then answer the cards.
+        If you miss one, you'll see the answer, and that fact will come back again soon.</li>
+      <li><strong>Watch your mastery grow.</strong> Each fact moves up through five levels:
+        New, Learning, Familiar, Strong and Mastered. Turn on "Show mastery" on the grid to see where you are.</li>
+    </ol>
+
+    <h2>Tips</h2>
+    <ul>
+      <li>Short, frequent rounds work better than long ones. One round a day is great.</li>
+      <li>Quick answers help a fact level up faster, but every correct answer counts.</li>
+      <li>3×7 and 7×3 are the same fact, so they're tracked together.</li>
+    </ul>
+
+    <h2>Your progress</h2>
+    <p>
+      Progress is saved in this browser on this device. To keep a copy or move to another
+      device, export it to a file and import it there.
+    </p>
+    <div class="row">
+      <button type="button" data-export-progress>Export progress</button>
+      <label class="button">Import progress
+        <input type="file" accept=".json,application/json" class="visually-hidden" data-import-progress>
+      </label>
+    </div>
+    <p class="status" data-progress-status aria-live="polite"></p>
+  </main>
+
+  <script type="module">
+    import { setupProgressButtons } from './js/progress-io.js';
+    setupProgressButtons();
+  </script>
+</body>
+</html>

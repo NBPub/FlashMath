@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practice · Flash Math</title>
+  <link rel="icon" href="img/sloth-small.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">Flash Math</a>
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="grid.html">Grid</a>
+      <a href="practice.html" aria-current="page">Practice</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- ===== Setup ===== -->
+    <section id="setup-screen">
+      <h1>Practice</h1>
+
+      <h2>Round length</h2>
+      <fieldset class="choice-list">
+        <legend class="visually-hidden">Round length</legend>
+        <label><input type="radio" name="length" value="cards20" checked> 20 cards</label>
+        <label><input type="radio" name="length" value="timed2"> 2 minutes</label>
+        <label><input type="radio" name="length" value="timed5"> 5 minutes</label>
+      </fieldset>
+
+      <h2>Let the app choose</h2>
+      <p class="muted">Adaptive practice mixes facts you're learning, facts due for review, and a few new ones.</p>
+      <button type="button" id="adaptive-button" class="primary big">Adaptive practice</button>
+
+      <p class="or">or</p>
+
+      <h2>Pick numbers</h2>
+      <p class="muted">You'll practice every fact that uses any number you pick.</p>
+      <div class="chips">
+        <button type="button" class="chip" data-number="1" aria-pressed="false">1</button>
+        <button type="button" class="chip" data-number="2" aria-pressed="false">2</button>
+        <button type="button" class="chip" data-number="3" aria-pressed="false">3</button>
+        <button type="button" class="chip" data-number="4" aria-pressed="false">4</button>
+        <button type="button" class="chip" data-number="5" aria-pressed="false">5</button>
+        <button type="button" class="chip" data-number="6" aria-pressed="false">6</button>
+        <button type="button" class="chip" data-number="7" aria-pressed="false">7</button>
+        <button type="button" class="chip" data-number="8" aria-pressed="false">8</button>
+        <button type="button" class="chip" data-number="9" aria-pressed="false">9</button>
+        <button type="button" class="chip" data-number="10" aria-pressed="false">10</button>
+        <button type="button" class="chip" data-number="11" aria-pressed="false">11</button>
+        <button type="button" class="chip" data-number="12" aria-pressed="false">12</button>
+      </div>
+      <div class="row">
+        <button type="button" data-group="starter">Starter: 1, 2, 5, 10</button>
+        <button type="button" data-group="middle">Middle: 3, 4, 9, 11</button>
+        <button type="button" data-group="challenge">Challenge: 6, 7, 8, 12</button>
+        <button type="button" id="clear-numbers">Clear choices</button>
+      </div>
+      <button type="button" id="start-button" class="primary big" disabled>Start</button>
+
+      <h2>Your progress</h2>
+      <p class="muted">Saved in this browser on this device.</p>
+      <div class="row">
+        <button type="button" data-export-progress>Export progress</button>
+        <label class="button">Import progress
+          <input type="file" accept=".json,application/json" class="visually-hidden" data-import-progress>
+        </label>
+      </div>
+      <p class="status" data-progress-status aria-live="polite"></p>
+      <p id="save-warning" class="status" hidden>This browser isn't saving progress (it may be in private mode).</p>
+    </section>
+
+    <!-- ===== Cards ===== -->
+    <section id="card-screen" hidden>
+      <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="card" id="card">
+        <p class="problem" id="problem" aria-live="polite"></p>
+        <input id="answer" class="answer" inputmode="numeric" maxlength="3" autocomplete="off" aria-label="Your answer">
+        <button type="button" id="check-button" class="primary check">Check</button>
+        <p class="feedback" id="feedback" aria-live="assertive"></p>
+        <button type="button" id="continue-button" class="primary" hidden>Continue</button>
+      </div>
+      <div class="numpad" id="numpad">
+        <button type="button" data-key="1">1</button>
+        <button type="button" data-key="2">2</button>
+        <button type="button" data-key="3">3</button>
+        <button type="button" data-key="4">4</button>
+        <button type="button" data-key="5">5</button>
+        <button type="button" data-key="6">6</button>
+        <button type="button" data-key="7">7</button>
+        <button type="button" data-key="8">8</button>
+        <button type="button" data-key="9">9</button>
+        <button type="button" data-key="back" aria-label="Delete">⌫</button>
+        <button type="button" data-key="0">0</button>
+        <button type="button" data-key="enter" class="enter" aria-label="Submit answer">✓</button>
+      </div>
+      <div class="row session-controls">
+        <button type="button" id="numpad-toggle">Hide number pad</button>
+        <button type="button" id="stop-button">Stop early</button>
+      </div>
+    </section>
+
+    <!-- ===== Summary ===== -->
+    <section id="summary-screen" hidden>
+      <img class="mascot-small" src="img/sloth-small.svg" alt="" width="72" height="72">
+      <h1 id="summary-title">Round complete</h1>
+      <p id="summary-score" class="summary-score"></p>
+      <div id="summary-details"></div>
+      <div class="row">
+        <button type="button" id="again-button" class="primary">Practice again</button>
+        <button type="button" id="change-button">Change sets</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/practice.js"></script>
+</body>
+</html>

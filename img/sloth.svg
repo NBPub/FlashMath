@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+  <!-- Sloth mascot: original drawing. A three-toed sloth hanging beneath one bar of a ×.
+       One arm and one leg pass behind the bar (the × is in front of them) and hook
+       their claws down over its front; the other arm and leg hook over in front. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- the other × bar, behind everything -->
+    <path d="M13 13 L59 59" stroke="#1d1d1b" stroke-width="9"/>
+    <path d="M13 13 L59 59" stroke="#4f7f78" stroke-width="6.5"/>
+
+    <!-- drawn with the bar the sloth hangs from as the x-axis -->
+    <g transform="translate(36 36) rotate(-45)">
+      <!-- BACK arm and leg: drawn first, so the bar covers them -->
+      <path d="M5 8 Q9 3 7 -5.6 M-12 9 Q-19 3 -17 -5.6" fill="none" stroke="#1d1d1b" stroke-width="6"/>
+      <path d="M5 8 Q9 3 7 -5.6 M-12 9 Q-19 3 -17 -5.6" fill="none" stroke="#8c7663" stroke-width="3.6"/>
+
+      <!-- the bar it hangs from -->
+      <path d="M-33 0 L33 0" stroke="#1d1d1b" stroke-width="9"/>
+      <path d="M-33 0 L33 0" stroke="#4f7f78" stroke-width="6.5"/>
+
+      <!-- back limbs' claws: come over the top of the bar and hook down its front -->
+      <g fill="none" stroke="#2b1f15" stroke-width="1.3">
+        <path d="M5.6 -6 q3 -0.4 3.2 3.2 M7 -6.2 q3 -0.4 3.2 3.2 M8.4 -6 q3 -0.4 3.2 3.2"/>
+        <path d="M-15.6 -6 q-3 -0.4 -3.2 3.2 M-17 -6.2 q-3 -0.4 -3.2 3.2 M-18.4 -6 q-3 -0.4 -3.2 3.2"/>
+      </g>
+
+      <!-- body, hanging below the bar -->
+      <ellipse cx="0" cy="13" rx="16" ry="8.5" fill="#9a8470" stroke="#1d1d1b" stroke-width="1.5"/>
+      <path d="M-9 15 q2 1.5 4 0 M-2 17 q2 1.5 4 0 M5 15 q2 1.5 4 0" fill="none" stroke="#6f5c4a" stroke-width="1"/>
+
+      <!-- FRONT arm and leg: curve out and up in front of the bar -->
+      <path d="M12 8 Q18 4 16 -1 M-5 8 Q-11 4 -9 -1" fill="none" stroke="#1d1d1b" stroke-width="6"/>
+      <path d="M12 8 Q18 4 16 -1 M-5 8 Q-11 4 -9 -1" fill="none" stroke="#9a8470" stroke-width="3.6"/>
+      <!-- front limbs' claws: start on the face of the bar and curl up over its top edge -->
+      <g fill="none" stroke="#2b1f15" stroke-width="1.3">
+        <path d="M14.6 -1.5 q0.6 -3 2.6 -3.1 M16 -1.7 q0.6 -3 2.6 -3.1 M17.4 -1.5 q0.6 -3 2.6 -3.1"/>
+        <path d="M-7.6 -1.5 q-0.6 -3 -2.6 -3.1 M-9 -1.7 q-0.6 -3 -2.6 -3.1 M-10.4 -1.5 q-0.6 -3 -2.6 -3.1"/>
+      </g>
+
+      <!-- head at the arm end, turned back upright so the face looks at the viewer -->
+      <g transform="translate(19.5 11.5) rotate(45)">
+        <circle r="8.5" fill="#9a8470" stroke="#1d1d1b" stroke-width="1.5"/>
+        <ellipse cy="0.8" rx="6.9" ry="5.4" fill="#efe2cc"/>
+        <ellipse cx="-3" cy="-0.2" rx="3.1" ry="1.6" fill="#4a3626" transform="rotate(-25 -3 -0.2)"/>
+        <ellipse cx="3" cy="-0.2" rx="3.1" ry="1.6" fill="#4a3626" transform="rotate(25 3 -0.2)"/>
+        <circle cx="-2.6" cy="-0.5" r="0.85" fill="#000"/>
+        <circle cx="2.6" cy="-0.5" r="0.85" fill="#000"/>
+        <circle cx="-2.3" cy="-0.8" r="0.3" fill="#fff"/>
+        <circle cx="2.9" cy="-0.8" r="0.3" fill="#fff"/>
+        <ellipse cy="2.4" rx="1.3" ry="0.9" fill="#3b2b1e"/>
+        <path d="M-1.8 4.1 Q0 5.4 1.8 4.1" fill="none" stroke="#1d1d1b" stroke-width="0.9"/>
+      </g>
+    </g>
+  </g>
+</svg>

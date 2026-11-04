@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+  <!-- Small sloth: original drawing, simplified for small sizes (icons, favicon).
+       A three-toed sloth hugging a times sign; colors match sloth.svg. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- the big × behind (black outline, then teal fill) -->
+    <path d="M14 14 L58 58 M58 14 L14 58" stroke="#1d1d1b" stroke-width="12"/>
+    <path d="M14 14 L58 58 M58 14 L14 58" stroke="#4f7f78" stroke-width="8"/>
+
+    <!-- arms reaching up to hold the top of the × -->
+    <path d="M28 41 Q17 37 20 23 M44 41 Q55 37 52 23" fill="none" stroke="#1d1d1b" stroke-width="8"/>
+    <path d="M28 41 Q17 37 20 23 M44 41 Q55 37 52 23" fill="none" stroke="#9a8470" stroke-width="5"/>
+    <!-- legs gripping the bottom of the × -->
+    <path d="M31 58 Q25 62 21 55 M41 58 Q47 62 51 55" fill="none" stroke="#1d1d1b" stroke-width="8"/>
+    <path d="M31 58 Q25 62 21 55 M41 58 Q47 62 51 55" fill="none" stroke="#9a8470" stroke-width="5"/>
+    <!-- claws: three on every hand and foot -->
+    <path d="M18 22 l-2 -2.5 M20 21 l-0.5 -3 M22.5 21.5 l1 -2.8 M54 22 l2 -2.5 M52 21 l0.5 -3 M49.5 21.5 l-1 -2.8
+             M19.5 56 l-3 0.5 M20 53.5 l-2.5 -1.5 M21 57.8 l-2 2
+             M52.5 56 l3 0.5 M52 53.5 l2.5 -1.5 M51 57.8 l2 2"
+          fill="none" stroke="#1d1d1b" stroke-width="1.5"/>
+
+    <!-- body and belly -->
+    <ellipse cx="36" cy="47" rx="13" ry="14.5" fill="#9a8470" stroke="#1d1d1b" stroke-width="2"/>
+    <ellipse cx="36" cy="50" rx="7.5" ry="8.5" fill="#b39e89"/>
+
+    <!-- head -->
+    <circle cx="36" cy="28" r="12" fill="#9a8470" stroke="#1d1d1b" stroke-width="2"/>
+    <ellipse cx="36" cy="30" rx="9.5" ry="7.5" fill="#efe2cc"/>
+    <!-- the sleepy, down-slanting eye patches sloths are known for -->
+    <ellipse cx="31.5" cy="29" rx="4" ry="2.4" fill="#4a3626" transform="rotate(-25 31.5 29)"/>
+    <ellipse cx="40.5" cy="29" rx="4" ry="2.4" fill="#4a3626" transform="rotate(25 40.5 29)"/>
+    <circle cx="32" cy="28.6" r="1.2" fill="#000"/>
+    <circle cx="40" cy="28.6" r="1.2" fill="#000"/>
+    <circle cx="32.4" cy="28.2" r="0.4" fill="#fff"/>
+    <circle cx="40.4" cy="28.2" r="0.4" fill="#fff"/>
+    <ellipse cx="36" cy="32.6" rx="2" ry="1.4" fill="#3a2410"/>
+    <path d="M33 35 Q36 37.6 39 35" fill="none" stroke="#1d1d1b" stroke-width="1.5"/>
+  </g>
+</svg>

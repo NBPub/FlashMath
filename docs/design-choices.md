@@ -117,14 +117,14 @@ The grid is for studying patterns before quizzing. For example, the digits of th
 
 ## References
 
-- Boaler, J. (2014). Research suggests that timed tests cause math anxiety. *Teaching Children Mathematics, 20*(8), 469–474. (Opinion column.)
-- Burns, M. K. (2004). Empirical analysis of drill ratio research: Refining the instructional level for drill tasks. *Remedial and Special Education, 25*(3), 167–173.
-- Burns, M. K. (2005). Using incremental rehearsal to increase fluency of single-digit multiplication facts with children identified as learning disabled in mathematics computation. *Education and Treatment of Children, 28*(3), 237–249.
-- Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. *Psychological Bulletin, 132*(3), 354–380. https://doi.org/10.1037/0033-2909.132.3.354
-- Codding, R. S., Archer, J., & Connell, J. (2010). A systematic replication and extension of using incremental rehearsal to improve multiplication skills: An investigation of generalization. *Journal of Behavioral Education, 19*(1), 93–105. https://doi.org/10.1007/s10864-010-9102-9
-- Isaacs, A. C., & Carroll, W. M. (1999). Strategies for basic-facts instruction. *Teaching Children Mathematics, 5*(9), 508–515. https://doi.org/10.5951/TCM.5.9.0508
-- Leitner, S. (1972). *So lernt man lernen* [How to learn to learn]. Herder.
-- MacQuarrie, L. L., Tucker, J. A., Burns, M. K., & Hartman, B. (2002). Comparison of retention rates using traditional, drill sandwich, and incremental rehearsal flash card methods. *School Psychology Review, 31*(4), 584–595.
-- Roediger, H. L., III, & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. *Psychological Science, 17*(3), 249–255. https://doi.org/10.1111/j.1467-9280.2006.01693.x
-- Rohrer, D., & Taylor, K. (2007). The shuffling of mathematics problems improves learning. *Instructional Science, 35*(6), 481–498. https://doi.org/10.1007/s11251-007-9015-8
-- Skinner, C. H., McLaughlin, T. F., & Logan, P. (1997). Cover, copy, and compare: A self-managed academic intervention effective across skills, students, and settings. *Journal of Behavioral Education, 7*(3), 295–306.
+- Boaler, J. (2014). Research suggests that timed tests cause math anxiety. *Teaching Children Mathematics, 20*(8), 469–474. (Opinion column.)  **[nctm](https://pubs.nctm.org/view/journals/tcm/20/8/article-p469.xml)**, **[pbworks](http://elementarymathendorsent.pbworks.com/w/file/fetch/81158603/Research%20suggest%20that%20timed%20tests%20cause%20math%20anxiety.pdf)**
+- Burns, M. K. (2004). Empirical analysis of drill ratio research: Refining the instructional level for drill tasks. *Remedial and Special Education, 25*(3), 167–173. **[doi](https://doi.org/10.1177/07419325040250030401)**
+- Burns, M. K. (2005). Using incremental rehearsal to increase fluency of single-digit multiplication facts with children identified as learning disabled in mathematics computation. *Education and Treatment of Children, 28*(3), 237–249. **[jstor](https://www.jstor.org/stable/42899847)**
+- Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. *Psychological Bulletin, 132*(3), 354–380. **[doi](https://doi.org/10.1037/0033-2909.132.3.354)**
+- Codding, R. S., Archer, J., & Connell, J. (2010). A systematic replication and extension of using incremental rehearsal to improve multiplication skills: An investigation of generalization. *Journal of Behavioral Education, 19*(1), 93–105. **[doi](https://doi.org/10.1007/s10864-010-9102-9)**
+- Isaacs, A. C., & Carroll, W. M. (1999). Strategies for basic-facts instruction. *Teaching Children Mathematics, 5*(9), 508–515. **[doi](https://doi.org/10.5951/TCM.5.9.0508)**
+- Leitner, S. (1972). *So lernt man lernen* [How to learn to learn]. Herder. **[wikipedia](https://en.wikipedia.org/wiki/Leitner_system)**
+- MacQuarrie, L. L., Tucker, J. A., Burns, M. K., & Hartman, B. (2002). Comparison of retention rates using traditional, drill sandwich, and incremental rehearsal flash card methods. *School Psychology Review, 31*(4), 584–595. **[doi](https://doi.org/10.1080/02796015.2002.12086176)**
+- Roediger, H. L., III, & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. *Psychological Science, 17*(3), 249–255. **[doi](https://doi.org/10.1111/j.1467-9280.2006.01693.x)**
+- Rohrer, D., & Taylor, K. (2007). The shuffling of mathematics problems improves learning. *Instructional Science, 35*(6), 481–498. **[doi](https://doi.org/10.1007/s11251-007-9015-8)**
+- Skinner, C. H., McLaughlin, T. F., & Logan, P. (1997). Cover, copy, and compare: A self-managed academic intervention effective across skills, students, and settings. *Journal of Behavioral Education, 7*(3), 295–306. **[doi](https://psycnet.apa.org/doi/10.1023/A:1022823522040)**

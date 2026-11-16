@@ -14,10 +14,10 @@
   --fast: #2f8f57;
   --slow: #3b8ea5;
   /* Mastery colors: strongest for facts that need the most work. */
-  --lvl-0: #e9825a;
-  --lvl-1: #f0a35e;
+  --lvl-1: #faead0;
   --lvl-2: #f6cf94;
-  --lvl-3: #faead0;
+  --lvl-3: #f0a35e;
+  --lvl-4: #e9825a;
   --radius: 12px;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
@@ -27,6 +27,9 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; }
+/* Stop iPhone/iPad Safari from zooming in on a quick double tap (e.g. typing
+   "11" on the number pad). Pinch-to-zoom still works. */
+html { touch-action: manipulation; }
 [hidden] { display: none !important; }
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
@@ -136,16 +139,18 @@ button:focus-visible, .button:focus-within, a:focus-visible, td:focus-visible, i
 .grid th { background: var(--bg); color: var(--muted); font-weight: 600; }
 .grid td { cursor: pointer; }
 
-/* Mastery colors (only when "Show mastery" is on). New cells are striped and
-   Learning cells bold, so the weakest facts stand out without relying on color. */
-.show-mastery td[data-level="0"] {
-  background-color: var(--lvl-0);
-  background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(255, 255, 255, .4) 4px 7px);
-}
+/* Mastery colors (only when "Show mastery" is on). Color deepens as a fact is
+   learned, so New and Learning facts stay the easiest to read. New cells are
+   plain, Learning cells bold, and Mastered cells striped like a crossed-off
+   item, so the levels can be told apart without relying on color. */
+.show-mastery td[data-level="0"] { font-weight: 700; }
 .show-mastery td[data-level="1"] { background-color: var(--lvl-1); font-weight: 700; }
 .show-mastery td[data-level="2"] { background-color: var(--lvl-2); }
 .show-mastery td[data-level="3"] { background-color: var(--lvl-3); }
-.show-mastery td[data-level="4"] { color: var(--muted); }
+.show-mastery td[data-level="4"] {
+  background-color: var(--lvl-4);
+  background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(255, 255, 255, .4) 4px 7px);
+}
 
 /* Highlighting (comes after mastery so the selected cell always wins). */
 /* td.in-line (not .in-line) so the tint also wins over the mastery colors. */
@@ -160,13 +165,13 @@ button:focus-visible, .button:focus-within, a:focus-visible, td:focus-visible, i
   content: ""; display: inline-block; width: 1em; height: 1em; margin-right: .35em;
   vertical-align: -.15em; border: 1px solid var(--line); background-color: var(--surface);
 }
-.legend [data-level="0"]::before {
-  background-color: var(--lvl-0);
-  background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255, 255, 255, .4) 3px 5px);
-}
 .legend [data-level="1"]::before { background-color: var(--lvl-1); }
 .legend [data-level="2"]::before { background-color: var(--lvl-2); }
 .legend [data-level="3"]::before { background-color: var(--lvl-3); }
+.legend [data-level="4"]::before {
+  background-color: var(--lvl-4);
+  background-image: repeating-linear-gradient(45deg, transparent 0 3px, rgba(255, 255, 255, .4) 3px 5px);
+}
 
 /* ---------- Larger screens ---------- */
 @media (min-width: 40rem) {

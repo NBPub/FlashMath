@@ -7,7 +7,7 @@ Practice is designed around well-studied learning strategies: recalling answers 
 
 <img src="img/sloth.svg" alt="The Flash Math sloth, hanging from a multiplication sign" width="160">
 
-| [Features](#features) | [Running Locally](#running-locally) | [Future Ideas](#future-ideas) | [AI Disclaimer](#ai-disclaimer) |
+| [Features](#features) | [Running Locally](#running-locally) | [Future Ideas](#future-ideas) | [AI Disclaimer](#ai-disclaimer) | [Changelog](#changelog) |
 
 *[MIT Licensed](LICENSE)*
 
@@ -53,3 +53,12 @@ They also run on every push through GitHub Actions.
 *The goal for this project was to build a working version as quickly as possible, and therefore coding and research were conducted almost entirely by AI.*
 
 The design, feature scope, and the review and testing process were planned and directed by the author. An AI assistant (Claude) wrote much of the code, tests and documentation. The design and judgement calls are the author's; the keystrokes are largely the model's.
+
+## Changelog
+
+- **2026-11-04**
+  - Open tabs no longer overwrite each other's progress.
+  - The grid's mastery colors refresh after pressing Back.
+- **2026-11-16**
+  - A quick double tap no longer zooms the page on iPhone and iPad (for example, typing 11 on the number pad). Pinch-to-zoom still works.
+  - The grid's mastery colors now deepen as facts are learned, so New and Learning facts are the easiest to read. Mastered facts are striped.
